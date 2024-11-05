@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b15fef52b0d7a7408c59b78324bce3e, type: 3}
   m_Name: Shield
   m_EditorClassIdentifier: 
-  ID: 0
-  Name: 
-  Cost: 0
-  Sprite: {fileID: 0}
-  CardType: {fileID: 0}
+  ID: 2
+  Name: Shield
+  Cost: 1
+  Sprite: {fileID: 21300000, guid: 9b0fd2da10f404ed6973b1a2a9aa9dc2, type: 3}
+  CardType: {fileID: 11400000, guid: 929288026a0ab084582bf865c835a5d5, type: 2}

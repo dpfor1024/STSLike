@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b15fef52b0d7a7408c59b78324bce3e, type: 3}
   m_Name: Potion
   m_EditorClassIdentifier: 
-  ID: 0
-  Name: 
-  Cost: 0
-  Sprite: {fileID: 0}
-  CardType: {fileID: 0}
+  ID: 3
+  Name: Potion
+  Cost: 1
+  Sprite: {fileID: 21300000, guid: 7598aa95320a94a509a76de3d47aa87e, type: 3}
+  CardType: {fileID: 11400000, guid: 696fc33e8fa1ac841b3e88b2294fb024, type: 2}
