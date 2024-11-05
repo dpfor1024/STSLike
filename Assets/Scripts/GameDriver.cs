@@ -8,6 +8,7 @@ public class GameDriver : MonoBehaviour
 
     [Header("Manager")]
     [SerializeField] private CardManager cardManager;
+    [SerializeField] private CardDeckManager cardDeckManager;
     
     private List<CardBase> _playerDeck = new List<CardBase>();
 
@@ -15,7 +16,6 @@ public class GameDriver : MonoBehaviour
     {
         cardManager.Init();
         CreatePlayer();
-        _playerDeck.Shuffle();
     }
 
     private void CreatePlayer()
@@ -26,5 +26,14 @@ public class GameDriver : MonoBehaviour
                 _playerDeck.Add(item.CardBase);
             }
         }
+
+        Init();
+    }
+
+    public void Init()
+    {
+        cardDeckManager.LoadDeck(_playerDeck);
+        cardDeckManager.ShuffleDeck();
+        cardDeckManager.DrawCard(5);
     }
 }
