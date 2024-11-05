@@ -15,6 +15,7 @@ public class GameDriver : MonoBehaviour
     {
         cardManager.Init();
         CreatePlayer();
+        _playerDeck.Shuffle();
     }
 
     private void CreatePlayer()
