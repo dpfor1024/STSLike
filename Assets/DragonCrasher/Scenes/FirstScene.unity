@@ -316,6 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartDeck: {fileID: 11400000, guid: c3759caa47518294f8cdaec1ce702ce9, type: 2}
   cardManager: {fileID: 1165230051}
+  cardDeckManager: {fileID: 1165230053}
 --- !u!4 &225207885
 Transform:
   m_ObjectHideFlags: 0
@@ -1288,6 +1289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1165230052}
   - component: {fileID: 1165230051}
+  - component: {fileID: 1165230053}
   m_Layer: 0
   m_Name: CardManager
   m_TagString: Untagged
@@ -1324,6 +1326,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1165230053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165230050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39711d921821ed04eb5d0002c8c0d277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1167516345 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4768689915073034622, guid: b09551d4c6f72584bab5b99aa39b33cd, type: 3}
