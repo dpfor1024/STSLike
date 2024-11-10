@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.Assertions;
+
+
 
 public class GameDriver : MonoBehaviour
 {
@@ -12,11 +16,21 @@ public class GameDriver : MonoBehaviour
     [SerializeField] private CardDisplayManager cardDisplayManager;
     
     private List<CardBase> _playerDeck = new List<CardBase>();
+    private List<GameObject> _enemys = new List<GameObject>();
+
+    [Header("Character")]
+    [SerializeField] private Transform enemyPoint;
+
+
+    [SerializeField] private AssetReference enemyBase;
+
+
 
     private void Start()
     {
         cardManager.Init();
         CreatePlayer();
+        CreateEnemy(enemyBase);
     }
 
     private void CreatePlayer()
@@ -37,5 +51,20 @@ public class GameDriver : MonoBehaviour
         cardDeckManager.LoadDeck(_playerDeck);
         cardDeckManager.ShuffleDeck();
         cardDeckManager.DrawCard(5);
+    }
+
+
+    private void CreateEnemy(AssetReference assetReference)
+    {
+        var handle = Addressables.LoadAssetAsync<EnemyBase>(assetReference);
+        handle.Completed += operationResult =>
+        {
+            var tem = operationResult.Result;
+            var enemy = Instantiate(tem.Prefab, enemyPoint);
+            Assert.IsNotNull(enemy);
+            enemy.gameObject.GetComponent<CharacterObject>().CharacterBase = tem;
+            _enemys.Add(enemy);
+        };
+
     }
 }
