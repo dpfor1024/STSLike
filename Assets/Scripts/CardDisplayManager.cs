@@ -1,5 +1,6 @@
 using DG.Tweening;
 using DG.Tweening.Core;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -138,5 +139,10 @@ public class CardDisplayManager : MonoBehaviour
                 _centerPos.y + Radius * Mathf.Cos(Mathf.Deg2Rad * angle),
                 0
             );
+    }
+
+    public bool IsMoving()
+    {
+        return isCardMoveing;
     }
 }
