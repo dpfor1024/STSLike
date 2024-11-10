@@ -51,11 +51,7 @@ public class CardSelectionNoArrow : CardSelectionBase
             return;
         var curObj = selectedCard;
         selectedCard = null;
-        DOTween.Sequence()
-            .Append(curObj.transform.DOMove(originalCardPosition, 0.2f))
-            .Join(curObj.transform.DORotate(originalCardRotation.eulerAngles, 0.2f)).SetEase(Ease.OutBack).OnComplete(() => {
-                curObj.GetComponent<SortingGroup>().sortingOrder = originalcardSortingOrder;
-            });
+        curObj.GetComponent<CardObject>().Reset();
     }
 
     private void UpdateSelectedCard()
@@ -65,6 +61,7 @@ public class CardSelectionNoArrow : CardSelectionBase
             var mousePosition = m_Camera.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0;
             selectedCard.transform.position= mousePosition;
+            selectedCard.transform.rotation = Quaternion.Euler(Vector3.zero);
         }
     }
 

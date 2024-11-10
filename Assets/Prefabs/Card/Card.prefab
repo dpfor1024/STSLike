@@ -1018,4 +1018,5 @@ MonoBehaviour:
   _description: {fileID: 6519764693925905444}
   _type: {fileID: 7773708927109794492}
   _spriteRenderer: {fileID: 8448130382703545259}
+  _sortingGroup: {fileID: 513639168245855207}
   Card: {fileID: 11400000, guid: 59458859cd07f6c4d8fd1749acf90a41, type: 2}

@@ -15,9 +15,9 @@ public class CardDisplayManager : MonoBehaviour
     private CardManager cardManager;
 
 
-    private List<Vector3> _pos;
-    private List<Quaternion> _rot;
-    private List<int> _sort;
+    private List<Vector3> _pos=new (PositionNumber);
+    private List<Quaternion> _rot=new List<Quaternion>(RotationNumber);
+    private List<int> _sort=new List<int>(SortingOrdersNumber);
 
     private readonly List<GameObject> _handCards = new(PositionNumber);
 
@@ -33,15 +33,6 @@ public class CardDisplayManager : MonoBehaviour
     {
         cardManager = manager;
     }
-
-    private void Start()
-    {
-        _pos = new List<Vector3>(PositionNumber);
-        _rot = new List<Quaternion>(RotationNumber);
-        _sort = new List<int>(SortingOrdersNumber);
-    }
-
-
 
     public void CreateHandcards(List<RuntimeCard> cardsInHand)
     {
@@ -79,22 +70,16 @@ public class CardDisplayManager : MonoBehaviour
             if (drawCard.Contains(card))
             {
                 var obj = card.GetComponent<CardObject>();
-                var seq = DOTween.Sequence();
-                seq.AppendInterval(interval);
-                seq.AppendCallback(() =>
-                {
-                    var move = card.transform.DOMove(_pos[j], time);
-                    card.transform.DORotateQuaternion(_rot[j], time);
-                    card.transform.DOScale(_originCardScale, time);
-                    if (j == _handCards.Count - 1)
-                    {
-                        move.OnComplete(() =>
-                        {
+                var seq = DOTween.Sequence()
+                    .AppendInterval(interval)
+                    .Append(card.transform.DOMove(_pos[j], time))
+                    .Join(card.transform.DORotateQuaternion(_rot[j], time))
+                    .Join(card.transform.DOScale(_originCardScale, time))
+                    .OnComplete(() => {
+                        card.GetComponent<CardObject>().SaveTransform(_pos[j], _rot[j]);
+                        if(j== _handCards.Count - 1)
                             isCardMoveing = false;
-                        });
-                    }
-                });
-
+                    });
                 card.GetComponent<SortingGroup>().sortingOrder = _sort[i];
                 interval += 0.2f;
             }
