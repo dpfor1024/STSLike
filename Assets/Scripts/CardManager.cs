@@ -31,4 +31,12 @@ public class CardManager : MonoBehaviour
     {
         return Instantiate(CardPrefab,transform,true);
     }
+
+
+    public GameObject GetInstance() {
+    
+        var obj =_instances.Count>0?_instances.Pop():CreateInstance();
+        obj.SetActive(true);
+        return obj;
+    }
 }

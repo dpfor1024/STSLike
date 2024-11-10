@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CardDeckManager : MonoBehaviour
 {
+
+    public CardDisplayManager CardDisplayManager;
+
     private List<RuntimeCard> _deck;
     private const int DeckCapacity = 30;
     private void Awake()
@@ -47,6 +50,8 @@ public class CardDeckManager : MonoBehaviour
                 drawCards.Add(_deck[0]);
                 _deck.RemoveAt(0);
             }
+
+            CardDisplayManager.CreateHandcards(drawCards);
         }
     }
 }
